@@ -1,10 +1,18 @@
 import React from "react";
-import Counter from "./components/Counter";
+import Conditional from "./components/Conditional";
+import ConditionalByStatus from "./components/ConditionalByStatus";
+
+const STATUS = {
+  LOADING: "LOADING",
+  LOADED: "LOADED",
+  ERROR: "ERROR",
+};
 
 function App() {
   return (
     <div className="App">
-      <Counter />
+      <Conditional />
+      <ConditionalByStatus status={STATUS.LOADING} />
     </div>
   );
 }

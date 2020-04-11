@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Header from "./Header";
 
 const datos = [
   "escuchar al profe",
@@ -44,10 +45,11 @@ class Counter extends Component {
   };
 
   render() {
-    console.log("render");
+    console.log("render Counter");
     return (
       <div>
         <h2>Counter</h2>
+        <Header />
         <p>{this.state.counter}</p>
         <h2>Todo</h2>
         <ul>
