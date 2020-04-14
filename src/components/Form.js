@@ -2,8 +2,8 @@ import React, { Component } from "react";
 
 class Form extends Component {
   state = {
-    password: "input",
-    name: "fasd",
+    password: "password",
+    name: "name",
   };
 
   handleInput = (e) => {

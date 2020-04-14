@@ -1,23 +1,81 @@
 import React, { Component } from "react";
 
-class Todos extends Component {
+class Input extends Component {
   state = {
     input: "",
   };
 
-  handleAddTodo = () => {};
+  handleInput = (e) => {
+    this.setState({
+      input: e.target.value,
+    });
+  };
+
+  handleClick = (e) => {
+    const { click } = this.props;
+    click(this.state.input);
+    this.setState(
+      {
+        input: "",
+      },
+      () => {
+        console.log("input", this.state.input);
+      }
+    );
+  };
 
   render() {
     const { input } = this.state;
+
+    // <button onClick={this.handleAddTodo}>add todo</button>
+    return (
+      <div>
+        <label htmlFor=""></label>
+        <input type="text" value={input} onChange={this.handleInput} />
+        <button onClick={this.handleClick}>add todo</button>
+      </div>
+    );
+  }
+}
+
+class Todos extends Component {
+  state = {
+    todos: ["comprar leche"],
+  };
+
+  handleAddTodo = (inputValue) => {
+    console.log("handleTodo", inputValue);
+    const { todos } = this.state;
+    this.setState({
+      todos: [...todos, inputValue],
+    });
+  };
+
+  handleDelete = (e) => {
+    // console.log(e.target);
+  };
+
+  render() {
+    const { todos } = this.state;
+    const that = this;
     return (
       <div>
         <h2>Mis tareas</h2>
-        <label htmlFor=""></label>
-        <input type="text" value={input} onChange={} />
-        <button onClick={this.handleAddTodo}>add todo</button>
+        <Input click={this.handleAddTodo} ctx={that} />
         <ul>
-          <li>todo 1</li>
-          <li>todo 2</li>
+          {todos.map((todo, index) => {
+            return (
+              <div key={index}>
+                <li>{todo}</li>
+                <button onClick={this.handleDelete}>delete</button>
+              </div>
+            );
+          })}
+          {/* {todos.map((todo, index) => {
+            return (
+              <Todo key={index} algo={} />
+            );
+          })} */}
         </ul>
       </div>
     );
