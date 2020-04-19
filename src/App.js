@@ -3,7 +3,8 @@ import React, { Component } from "react";
 // import Conditional from "./components/Conditional";
 // import ConditionalByStatus from "./components/ConditionalByStatus";
 // import Form from "./components/Form";
-import Todos from "./components/Todos";
+// import Todos from "./components/Todos";
+import Life from "./components/Life";
 // import Form from "./components/Form";
 
 // const STATUS = {
@@ -13,10 +14,23 @@ import Todos from "./components/Todos";
 // };
 
 class App extends Component {
+  state = {
+    show: true,
+  };
+
+  handleShow = () => {
+    this.setState({
+      show: !this.state.show,
+    });
+  };
+
   render() {
+    const { show } = this.state;
     return (
       <div className="App">
-        <Todos />
+        {show && <Life />}
+        <button onClick={this.handleShow}>show/hide</button>
+        {/* <Todos /> */}
         {/* <Form /> */}
       </div>
     );
