@@ -34,6 +34,7 @@ class Counter extends Component {
   };
 
   render() {
+    console.log("render");
     return (
       <div>
         {!this.isControlled() ? this.state.counter : this.props.value}

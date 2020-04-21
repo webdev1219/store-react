@@ -57,11 +57,10 @@ class Todos extends Component {
 
   render() {
     const { todos } = this.state;
-    const that = this;
     return (
       <div>
         <h2>Mis tareas</h2>
-        <Input click={this.handleAddTodo} ctx={that} />
+        <Input click={this.handleAddTodo} />
         <ul>
           {todos.map((todo, index) => {
             return (
