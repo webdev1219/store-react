@@ -56,10 +56,12 @@ class Todos extends Component {
   };
 
   render() {
+    console.log("props en Todo", this.props);
+    const { match: { params: { id = "defecto" } = {} } = {} } = this.props;
     const { todos } = this.state;
     return (
       <div>
-        <h2>Mis tareas</h2>
+        <h2>Mi id {id}</h2>
         <Input click={this.handleAddTodo} />
         <ul>
           {todos.map((todo, index) => {

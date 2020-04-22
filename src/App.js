@@ -6,7 +6,7 @@ import Counter from "./components/CounterControlled";
 import Todos from "./components/Todos";
 // import Life from "./components/Life";
 import Form from "./components/Form";
-import { Route, Link, Switch } from "react-router-dom";
+import { Route, Link, Switch, withRouter } from "react-router-dom";
 
 // const STATUS = {
 //   LOADING: "LOADING",
@@ -14,20 +14,30 @@ import { Route, Link, Switch } from "react-router-dom";
 //   ERROR: "ERROR",
 // };
 
+const TodosWithRouter = withRouter(Todos);
+
 class App extends Component {
+  renderTodo = (props) => {
+    return <Todos {...props} />;
+  };
+
   render() {
     return (
       <div className="App">
-        <Link to="/a">Form</Link> | <Link to="/a/b">Counter</Link> |
+        <Link to="/children/algo">children</Link> |
+        <Link to="/render/algo">Render</Link> |
+        <Link to="/component/algo">Component</Link> |
+        <Link to="/children-not-prop/algo">Children not prop</Link>
         <Switch>
-          <Route exact path="/a">
-            <Form />
-          </Route>
-          <Route exact path="/a/b">
-            <Counter />
-          </Route>
-          <Route path="/a/b/c">
-            <Todos />
+          <Route
+            exact
+            path="/children/:id"
+            children={(props) => <Todos {...props} />}
+          />
+          <Route exact path="/render/:id" render={this.renderTodo} />
+          <Route path="/component/:id" component={Todos} />
+          <Route path="/children-not-prop/:id">
+            <TodosWithRouter />
           </Route>
         </Switch>
       </div>
