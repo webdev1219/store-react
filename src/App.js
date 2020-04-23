@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Route, Link, Switch, withRouter } from "react-router-dom";
 import Counter from "./components/CounterControlled";
 // import Conditional from "./components/Conditional";
 // import ConditionalByStatus from "./components/ConditionalByStatus";
@@ -6,7 +7,7 @@ import Counter from "./components/CounterControlled";
 import Todos from "./components/Todos";
 // import Life from "./components/Life";
 import Form from "./components/Form";
-import { Route, Link, Switch, withRouter } from "react-router-dom";
+import Countries from "./components/Countries";
 
 // const STATUS = {
 //   LOADING: "LOADING",
@@ -39,6 +40,7 @@ class App extends Component {
           <Route path="/children-not-prop/:id">
             <TodosWithRouter />
           </Route>
+          <Route path="/countries" component={Countries} />
         </Switch>
       </div>
     );
